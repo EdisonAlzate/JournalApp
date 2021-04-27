@@ -13,23 +13,25 @@ import { AuthRouter } from "./AuthRouter";
 export const RouterJournal=()=> {
   return (
     <Router>
-      <div>           
-        <Switch>
-          <Route 
-             path="/auth"
-             component={AuthRouter}
-           />
-          
-           <Route 
-             exact
-             path="/"
-             component={JournalScreen}
-           />
+    <div >
+        <div  >           
+          <Switch>
+            <Route 
+              path="/auth"
+              component={AuthRouter}
+            />
             
-           <Redirect to={"/auth/login"}/>
-          
-        </Switch>
-      </div>
+            <Route 
+              exact
+              path="/"
+              component={JournalScreen}
+            />
+              
+            <Redirect to={"/auth/login"}/>
+            
+          </Switch>
+        </div>
+    </div>
     </Router>
   );
 }

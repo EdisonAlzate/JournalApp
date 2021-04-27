@@ -1,0 +1,51 @@
+
+.auth__main-content{
+ background: $primary;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ height: 100vh;
+ width: 100vw;
+}
+
+.auth__box-container{
+   background: white;
+   width:250px;
+   padding:20px;
+   border-radius: 2px;
+    
+}
+
+.auth__input{
+    font-size: 15px;
+    border:0px;
+    color:$dark-grey;
+    border-bottom: 1px solid $light-grey;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    width:100%;
+    transition:border-bottom ease .3s;
+
+
+    &:focus{
+        border-bottom: 1px solid $primary ;
+        outline:none
+    }
+
+    
+   }
+
+   .auth__social-network{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+   }
+
+
+
+
+
