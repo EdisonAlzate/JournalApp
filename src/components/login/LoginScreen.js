@@ -1,12 +1,36 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { loginEmailPassword, loginWithGoogle } from '../../actions/authAction'
+import { useForm } from '../../hooks/useForm'
 
 export const LoginScreen = () => {
+    
+    const dispatch = useDispatch() 
+    
+    const [values, handleInputChange] =useForm({
+        email:"edison@gmail.com",
+        password:"password"
+    })
+
+    const {email,password}=values
+   
+    const handleLogin=(e)=>{
+        e.preventDefault()
+        console.log(email,password)
+        dispatch(loginEmailPassword(email,password)) 
+    }
+
+    const handleLoginGoogle=()=>{
+        console.log('loginGoogle')
+        dispatch(loginWithGoogle())
+    }    
+    
     return (
         <div>
          <h3 >Login</h3>
          
-            <form>
+            <form onSubmit={handleLogin}>
                 <input
                     className="auth__input"
 
@@ -14,6 +38,8 @@ export const LoginScreen = () => {
                     placeholder="Email"
                     autoComplete="off"
                     name="email"
+                    value={email}
+                    onChange={handleInputChange}
                     
                 />
                 
@@ -22,6 +48,8 @@ export const LoginScreen = () => {
                     type="password"
                     placeholder="Password"
                     name="password"
+                    value={password}
+                    onChange={handleInputChange}
                     
 
                 />
@@ -38,7 +66,9 @@ export const LoginScreen = () => {
             <div className="auth__social-network">
                 <p >Login with social networks</p>
             
-                <div  className="google-btn"
+                <div 
+                   className="google-btn"
+                   onClick={handleLoginGoogle}
                 >
                     <div className="google-icon-wrapper">
                         <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google button" />
