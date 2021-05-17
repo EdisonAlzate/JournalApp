@@ -1,12 +1,30 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useForm } from '../../hooks/useForm'
+
+
 
 export const RegisterScreen = () => {
+    
+   const [ values, handleInputChange ]= useForm({
+        name:'edison',
+        email:'edisonalzate11@gmail.com',
+        password:123456,
+        password2:123456
+
+    })
+
+   const  {name,email,password,password2}=values
+    
+   const handleRegisterClick=(e)=>{
+       e.preventDefault()
+       console.log(name,email,password,password2)
+   }
     return (
         <div>
          <h3 >Register</h3>
          
-            <form>
+            <form onSubmit={handleRegisterClick}>
                 <input
                     className="auth__input"
 
@@ -14,6 +32,8 @@ export const RegisterScreen = () => {
                     placeholder="Name"
                     autoComplete="off"
                     name="name"
+                    value={name}
+                    onChange={handleInputChange}
                     
                 />
                 <input
@@ -23,6 +43,8 @@ export const RegisterScreen = () => {
                     placeholder="Email"
                     autoComplete="off"
                     name="email"
+                    value={email}
+                    onChange={handleInputChange}
                     
                 />
                 
@@ -31,6 +53,8 @@ export const RegisterScreen = () => {
                     type="password"
                     placeholder="Password"
                     name="password"
+                    value={password}
+                    onChange={handleInputChange}
                     
                 />
                 <input
@@ -38,12 +62,14 @@ export const RegisterScreen = () => {
                     type="password"
                     placeholder="Confirm Password"
                     name="password2"
-                    
+                    value={password2}
+                    onChange={handleInputChange}
                 />
 
                 <button
                     className="btn btn-primary btn-block"
-                    type="submit"
+                    
+                    
                 >
                 Register 
                 </button>
