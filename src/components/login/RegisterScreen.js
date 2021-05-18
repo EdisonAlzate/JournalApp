@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import validator from 'validator'
 import { RemoveError, setError } from '../../actions/uiActions'
@@ -18,6 +18,8 @@ export const RegisterScreen = () => {
     })
 
     const dispatch = useDispatch()
+    const {msgError} = useSelector(state => state.ui)
+    
    const  {name,email,password,password2}=values
     
    const handleRegistersubmit=(e)=>{
@@ -71,12 +73,17 @@ export const RegisterScreen = () => {
          <form 
             onSubmit={handleRegistersubmit}
             
-         
-         >
-         
+            >
+            
+            {
+                msgError&&
+                (
+
+                    <p className="auth__warning-form">{msgError}</p>
+                )
+            }
              
                
-                 <p className="auth__warning-form">warning</p>
              
          
                 <input
