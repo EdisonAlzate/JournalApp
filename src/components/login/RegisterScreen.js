@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import validator from 'validator'
+import { startLoginWithRegisterEmailPasword } from '../../actions/authAction'
 import { RemoveError, setError } from '../../actions/uiActions'
 import { useForm } from '../../hooks/useForm'
 
@@ -12,8 +13,8 @@ export const RegisterScreen = () => {
    const [ values, handleInputChange ]= useForm({
         name:'edison',
         email:'edisonalzate11@gmail.com',
-        password:123456,
-        password2:123456
+        password:'123456',
+        password2:'123456'
 
     })
 
@@ -31,7 +32,7 @@ export const RegisterScreen = () => {
        
        if (isFormValid()) {
            
-        console.log('form ok')
+        dispatch(startLoginWithRegisterEmailPasword(email,password,name))
         
       }
    }
