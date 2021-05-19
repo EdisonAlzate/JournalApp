@@ -5,5 +5,8 @@ logout:'[Auth] Logout',
 
 
 setError:'[ui] Set Error',
-RemoveError:'[ui] Remove Error'
+RemoveError:'[ui] Remove Error',
+
+iuStarLoading:'[iu] start loading',
+iuFinishLoading:'[iu] Finish loading'
 }

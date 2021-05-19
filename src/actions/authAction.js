@@ -1,16 +1,25 @@
 import { type } from "../types/type"
 import { firebase, googleAuthProvider } from '../firebase/firebase-config'
+import { finishLoading,startLoading } from "./uiActions"
 
 
 //crete accion async
 export const loginEmailPassword=(email,password)=>{
 
     return(dispatch)=>{
+        dispatch(startLoading())
+        firebase.auth().createUserWithEmailAndPassword(email,password)
+        .then(({user})=>{
 
-        setTimeout(() => {
-            
-            dispatch(login('654654','jaramillo'))
-        }, 4000);
+             
+            dispatch(login(user.uid, user.displayName))
+            dispatch(finishLoading())
+        })
+        .catch(e=>{
+            console.log(e);
+            dispatch(finishLoading())
+        })
+       
     }
 }
 
@@ -48,3 +57,5 @@ export const login = (uid,displayName ) => ({
     
   
 })
+
+

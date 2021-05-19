@@ -10,3 +10,12 @@ export const RemoveError=()=>({
     type: type.RemoveError,
     
 })
+
+export const startLoading=()=>({
+    type:type.iuStarLoading ,
+    
+})
+export const finishLoading=()=>({
+    type:type.iuFinishLoading ,
+    
+})
