@@ -6,18 +6,17 @@ import { finishLoading,startLoading } from "./uiActions"
 //crete accion async
 export const loginEmailPassword=(email,password)=>{
     return (dispatch) => {
-        
+
         dispatch( startLoading() );
         
         
         firebase.auth().signInWithEmailAndPassword( email, password )
         
-        .then(({user})=>{
+            .then( ({ user }) => {
+                dispatch(login( user.uid, user.displayName ));
 
-            
-            dispatch(login(user.uid, user.displayName))
-        })
-      
+                dispatch( finishLoading() );
+            })
             .catch( e => {
                 console.log(e);
                 dispatch( finishLoading() );
