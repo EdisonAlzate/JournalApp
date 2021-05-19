@@ -5,21 +5,27 @@ import { finishLoading,startLoading } from "./uiActions"
 
 //crete accion async
 export const loginEmailPassword=(email,password)=>{
-
-    return(dispatch)=>{
-        dispatch(startLoading())
-        firebase.auth().createUserWithEmailAndPassword(email,password)
+    return (dispatch) => {
+        
+        dispatch( startLoading() );
+        
+        
+        firebase.auth().signInWithEmailAndPassword( email, password )
+        
         .then(({user})=>{
 
-             
+            
             dispatch(login(user.uid, user.displayName))
-            dispatch(finishLoading())
         })
-        .catch(e=>{
-            console.log(e);
-            dispatch(finishLoading())
-        })
-       
+      
+            .catch( e => {
+                console.log(e);
+                dispatch( finishLoading() );
+                
+            })
+
+        
+        
     }
 }
 
@@ -29,8 +35,9 @@ export const startLoginWithRegisterEmailPasword =(email,password,name)=>{
         firebase.auth().createUserWithEmailAndPassword(email,password)
         .then(async({user})=>{
 
-            await user.updateProfile({displayName:name})  
+            await user.updateProfile({displayName:name}) 
             dispatch(login(user.uid, user.displayName))
+            console.log(user.displayName) 
         })
 
         
