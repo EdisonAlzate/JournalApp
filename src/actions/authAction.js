@@ -1,7 +1,7 @@
 import { type } from "../types/type"
 import { firebase, googleAuthProvider } from '../firebase/firebase-config'
 import { finishLoading,startLoading } from "./uiActions"
-
+import Swal from 'sweetalert2'
 
 //crete accion async
 export const loginEmailPassword=(email,password)=>{
@@ -20,6 +20,7 @@ export const loginEmailPassword=(email,password)=>{
             .catch( e => {
                 console.log(e);
                 dispatch( finishLoading() );
+                Swal.fire('Error',e.message,'error')
                 
             })
 
@@ -37,6 +38,8 @@ export const startLoginWithRegisterEmailPasword =(email,password,name)=>{
             await user.updateProfile({displayName:name}) 
             dispatch(login(user.uid, user.displayName))
             console.log(user.displayName) 
+        }).catch((e)=>{
+            Swal.fire('Error',e.message,'error')
         })
 
         
