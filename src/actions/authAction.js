@@ -65,4 +65,20 @@ export const login = (uid,displayName ) => ({
   
 })
 
+export const getLogout=()=>{
 
+    return async( dispatch ) => {
+        await firebase.auth().signOut();
+
+        dispatch( logout() );
+    }
+}
+
+
+export const logout=()=>({
+
+    type:type.logout ,
+    
+}
+    
+)
