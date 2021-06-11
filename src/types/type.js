@@ -8,5 +8,7 @@ setError:'[ui] Set Error',
 RemoveError:'[ui] Remove Error',
 
 iuStarLoading:'[iu] start loading',
-iuFinishLoading:'[iu] Finish loading'
+iuFinishLoading:'[iu] Finish loading',
+
+notesAddNew:'[notes] New Note '
 }
