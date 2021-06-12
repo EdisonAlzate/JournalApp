@@ -2,14 +2,14 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
-const firebaseConfig = {
-    apiKey: "AIzaSyDK2xFqAtUhrsl3ITuKGL7PlHJw5kWow48",
-    authDomain: "journalapp-cc169.firebaseapp.com",
-    projectId: "journalapp-cc169",
-    storageBucket: "journalapp-cc169.appspot.com",
-    messagingSenderId: "805497642549",
-    appId: "1:805497642549:web:521d479ee75452dcb69b7c"
-  };
+const firebaseConfig =  {
+  apiKey: "AIzaSyCNwD20rEmVbFFwKMg4-QGSXQfeu5wPFHQ",
+  authDomain: "journalpractice2.firebaseapp.com",
+  projectId: "journalpractice2",
+  storageBucket: "journalpractice2.appspot.com",
+  messagingSenderId: "513429306810",
+  appId: "1:513429306810:web:3e65927c48232dfed3f183"
+};
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
