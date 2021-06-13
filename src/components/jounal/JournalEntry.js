@@ -1,26 +1,32 @@
 import React from 'react'
+import moment from 'moment'
 
-export const JournalEntry = () => {
+
+export const JournalEntry = ({id,body,date,title,url}) => {
+    
+    const dateMoment= moment(date)
     return (
         <div className="journal__entry">
-           
-        <div 
-            className="journal__entry-picture"
-            style={{
-                backgroundSize: 'cover',
-                backgroundImage: 'url(https://earthsky.org/upl/2018/12/comet-wirtanen-Jack-Fusco-dec-2018-Anza-Borrego-desert-CA-e1544613895713.jpg)'
-            }}
-         ></div>
+        {
+            url &&
+            <div 
+                className="journal__entry-picture"
+                style={{
+                    backgroundSize: 'cover',
+                    backgroundImage: 'url(https://earthsky.org/upl/2018/12/comet-wirtanen-Jack-Fusco-dec-2018-Anza-Borrego-desert-CA-e1544613895713.jpg)'
+                }}
+             >
+             </div>
+        }   
         
            <div>
-                <h2>Un nuevo dia</h2>    
-                <p>sdfgsdfgdfgsdfgsdfgdsfgsdfgsdfgsdfgsdf
-                sdfgsdfgsdfgsdfgsdfgsdfgsdfg</p>
+                <h2>{title}</h2>    
+                <p>{body}</p>
            </div> 
 
            <div className="journal__entryDate">
-                <p>monday</p>
-                <span>28</span>
+                <p>{dateMoment.format('dddd')}</p>
+                <span>{dateMoment.format('Do')}</span>
            </div>
 
         </div>
