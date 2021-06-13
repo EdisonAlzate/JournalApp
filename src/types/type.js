@@ -11,5 +11,7 @@ iuStarLoading:'[iu] start loading',
 iuFinishLoading:'[iu] Finish loading',
 
 notesAddNew:'[notes] New Note ',
-notesActive:'[notes] New Active '
+notesActive:'[notes] New Active ',
+notesUpState:'[notes] notes up state'
+
 }

@@ -18,8 +18,14 @@ export const noteReducer =(state=initialState,action)=>{
             }
         }
             
-            
-    
+        case type.notesUpState:
+            return{
+
+                ...state,
+                notes:[...action.payload]
+            }
+
+        
         default:
             return state
            

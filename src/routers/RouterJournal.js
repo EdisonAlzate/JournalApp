@@ -7,8 +7,10 @@ import {
   Redirect
 } from "react-router-dom";
 import { login } from "../actions/authAction";
+import { startLoadNotes } from "../actions/notesAction";
 import { JournalScreen } from "../components/jounal/JournalScreen";
 import {firebase} from "../firebase/firebase-config"
+import { loadNotes } from "../helpers/loadNotes";
 
 import { AuthRouter } from "./AuthRouter";
 import { PrivateRoute } from "./PrivateRoute";
@@ -27,6 +29,9 @@ export const RouterJournal=()=> {
     if (user?.uid) {
       dispatch(login(user.uid,user.displayName))
       setIsLogged(true)
+
+      dispatch(startLoadNotes(user.uid))
+      
     
     }else{
       setIsLogged(false)
