@@ -21,7 +21,7 @@ export const NotesScreen = () => {
     useEffect(() => {
         dispatch(activeNote(values.id,{...values}))
         console.log(values)
-    }, [values])
+    }, [values,dispatch])
     
     const {body,title,url}=values
     console.log(values)

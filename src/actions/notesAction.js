@@ -47,3 +47,18 @@ export const upNotes=(notesL)=>({
 })
 
 
+export const startSaveNote=(note)=>{
+    return async (dispatch,getState)=>{
+
+        const {uid}=getState().authh
+        if (!note.url) {
+           delete note.url
+        }
+
+        const noteToFirebase ={...note}
+           delete noteToFirebase.id 
+        
+
+        await db.doc(`${uid}/journal/notes/${note.id}`).update(noteToFirebase)
+    }
+}
