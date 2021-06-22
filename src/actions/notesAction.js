@@ -1,6 +1,8 @@
 import { db } from "../firebase/firebase-config"
 import { loadNotes } from "../helpers/loadNotes"
 import { type } from "../types/type"
+import Swal from "sweetalert2"
+
 
 export const starNewEntry=()=>{
     return async(dispatch,getState)=>{
@@ -60,5 +62,21 @@ export const startSaveNote=(note)=>{
         
 
         await db.doc(`${uid}/journal/notes/${note.id}`).update(noteToFirebase)
+    
+        dispatch(refreshNote(note.id,noteToFirebase))
+        Swal.fire('Saved',note.title,'success')
     }
 }
+
+//action async que tomara valores del state local, 
+//sin necesidad de ir hasta la base de datos 
+export const refreshNote=(id,note)=>({
+    type: type.notesUpDate,
+    payload:{
+        id,
+        note:{
+            id,
+            ...note
+        }
+    }
+})

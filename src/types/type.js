@@ -12,6 +12,7 @@ iuFinishLoading:'[iu] Finish loading',
 
 notesAddNew:'[notes] New Note ',
 notesActive:'[notes] New Active ',
-notesUpState:'[notes] notes up state'
+notesUpState:'[notes] notes up state',
+notesUpDate:'[notes] notes update'
 
 }
