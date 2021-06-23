@@ -111,3 +111,28 @@ export const startUpLoading = (file)=>{
         console.log(activeNote) */
     }
 }
+
+
+export const startDeleteNote=(id)=>{
+    return async(dispatch,getState)=>{
+
+        const {uid}= getState().authh
+
+        await db.doc(`${uid}/journal/notes/${id}`).delete()
+
+       
+
+        dispatch(refreshWithoutNotesDeleted(id))
+
+
+    }
+
+
+}
+
+export const refreshWithoutNotesDeleted=(id)=>({
+    type:type.notesDelete,
+            
+        payload:id
+
+})
