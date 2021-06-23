@@ -2,7 +2,9 @@ import { db } from "../firebase/firebase-config"
 import { loadNotes } from "../helpers/loadNotes"
 import { type } from "../types/type"
 import Swal from "sweetalert2"
+import { loadUpFile } from "../helpers/loadUpFile"
 
+//react-journal
 
 export const starNewEntry=()=>{
     return async(dispatch,getState)=>{
@@ -80,3 +82,32 @@ export const refreshNote=(id,note)=>({
         }
     }
 })
+
+//envio de imagenes al cloudinary
+
+export const startUpLoading = (file)=>{
+    return async(dispatch,getState)=>{
+        const {active:activeNote}=getState().notes
+
+        Swal.fire({
+            title:'Uploading...',
+            text:'Please wait...',
+            allowOutsideClick:false,
+            onBeforeOpen:()=>{
+                Swal.showLoading()
+            }
+        })
+        
+        const urlPost= await loadUpFile(file)
+        console.log(urlPost)
+
+        Swal.close()
+
+        activeNote.url=urlPost
+
+        dispatch(startSaveNote(activeNote)) 
+
+        /* console.log(file)
+        console.log(activeNote) */
+    }
+}

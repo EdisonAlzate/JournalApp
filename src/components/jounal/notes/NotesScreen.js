@@ -5,26 +5,28 @@ import { useForm } from '../../../hooks/useForm'
 import { NotesAppbar } from './NotesAppbar'
 
 export const NotesScreen = () => {
-    const {active:notes} = useSelector(state => state.notes)
+    const {active:note} = useSelector(state => state.notes)
+   
     
-    const [values, handleInputChange,reset]=useForm(notes)
+    const [values, handleInputChange,reset]=useForm(note)
     const dispatch = useDispatch()
+    const {body,title,id}=values
 
-    const activeId=useRef(notes.id)
+    const activeId=useRef(note.id)
+
     useEffect(() => {
-        if (notes.id !== activeId.current) {
-            reset(notes)
-            activeId.current=notes.id
+        if (note.id !== activeId.current) {
+            reset(note)
+            activeId.current=note.id
         }
-    }, [notes,reset])
+    }, [note,reset])
 
     useEffect(() => {
         dispatch(activeNote(values.id,{...values}))
         console.log(values)
     }, [values,dispatch])
     
-    const {body,title,url}=values
-    console.log(values)
+    
     return (
         <div className="notes__main-content">
            <NotesAppbar/>
@@ -47,15 +49,18 @@ export const NotesScreen = () => {
                 >
                         
                 </textarea>
-               {
-                    (notes.url)&&
+
+                {
+                   
+                    (note.url)
+                    &&
                     (
 
                         <div className="notes__image">
                             <img 
                                 
-                                src="https://www.hazunaweb.com/imagenes/prueba.jpg" 
-                                alt="imagfe"
+                                src={note.url} 
+                                alt="imagen"
                             />
                         
                         </div>
