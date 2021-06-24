@@ -43,6 +43,23 @@ export const noteReducer =(state=initialState,action)=>{
                     note.id!==action.payload
                 )
             }
+
+        case type.notesLogOutDelete:
+            return{
+
+                ...state,
+                active:null,
+                notes:[]
+            }
+
+        case type.newNoteAdd:
+            return{
+                ...state,
+                
+                notes:[action.payload,...state.notes]
+            }
+
+            
         
         default:
             return state

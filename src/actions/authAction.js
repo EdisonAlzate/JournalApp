@@ -2,6 +2,7 @@ import { type } from "../types/type"
 import { firebase, googleAuthProvider } from '../firebase/firebase-config'
 import { finishLoading,startLoading } from "./uiActions"
 import Swal from 'sweetalert2'
+import { logOutDeleteNote } from "./notesAction"
 
 //crete accion async
 export const loginEmailPassword=(email,password)=>{
@@ -73,6 +74,7 @@ export const getLogout=()=>{
         await firebase.auth().signOut();
 
         dispatch( logout() );
+        dispatch(logOutDeleteNote())
     }
 }
 
