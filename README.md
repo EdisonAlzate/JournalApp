@@ -1,7 +1,7 @@
 # JournalApp
 
 Is an application created in React.js that allows you to enter and modify the information of a journal with the option of attaching an image and the date of creation of the note. Used technology:
-Create React app, React hooks, Redux, Router, Sass, Crud and authentication with Firebase, Git, GitHub
+Create React app, React hooks,apiRest, Redux, Router, Sass, Crud and authentication with Firebase, Git, GitHub
 
 # Getting Started with Create React App
 
